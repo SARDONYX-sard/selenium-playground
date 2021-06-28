@@ -2,12 +2,20 @@
   "name": "selenium-playground",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SARDONYX-sard/selenium-playground"
+  },
+  "main": "src/main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "selenium": "npx ts-node src/main.ts",
+    "lint": "eslint ./src/**/*.ts",
+    "lint:fix": "eslint ./src/**/*.ts --fix",
+    "test": "jest --coverage",
+    "clean": "rm -rf ./src/logs ./coverage ./lib"
   },
   "keywords": [],
-  "author": "",
+  "author": "SARDONYX",
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.1",
@@ -26,7 +34,7 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-jest": "24.3.6",
     "eslint-plugin-prettier": "3.4.0",
-    "husky": "6.0.0",
+    "husky": "^6.0.0",
     "jest": "27.0.5",
     "jest-plugin-context": "2.9.0",
     "lint-staged": "11.0.0",
@@ -34,5 +42,20 @@
     "ts-jest": "27.0.3",
     "ts-node": "10.0.0",
     "typescript": "4.3.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix ./src/**/*",
+      "prettier --write ./src/**/*"
+    ]
+  },
+  "peerDependencies": {},
+  "engines": {
+    "node": ">=14"
   }
 }
