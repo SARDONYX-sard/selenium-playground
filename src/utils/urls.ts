@@ -88,7 +88,7 @@ export const getArizonaWeatherFromGoogle = async ({
       domain: "google.com/search",
 
       // 1つめのHTML要素の取得関数を記述
-      getElement2: async () => {
+      getElement1: async () => {
         // 今日の曜日 (例： Monday)
         const dow = await driver
           .findElement(
@@ -100,7 +100,7 @@ export const getArizonaWeatherFromGoogle = async ({
       },
 
       // 2つめのHTML要素の取得関数を記述
-      getElement1: async () => {
+      getElement2: async () => {
         // 気温: °C(例： 27)
         const celsius = await driver.findElement(By.id("wob_tm")).getText();
         // 降水確率: (例： 60%)
